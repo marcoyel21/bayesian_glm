@@ -21,3 +21,12 @@ NOTA: Las gráfica que consideren útiles las pueden incluir en cualquiera de la
 # Propuestas
 
 https://tukanmx.com/
+
+# Discusión
+
+Creo que los datos de hipotecas están muy completos y ademas son públicos, les comparto el URL oficial
+https://app.powerbi.com/view?r=eyJrIjoiNDM2ZDc4MjQtOTU4ZC00NTI3LThlZGEtOTZlZTQ3NDUwO[…]6IjVlMmM0OTc3LTEwN2QtNDBhMy04YWY3LTcwMDc0ODFhNjBkNCIsImMiOjR9
+
+# Modelos
+
+Propogno hacer un modelo de regresion para predecir o explicar cantidad de credito otorgado
