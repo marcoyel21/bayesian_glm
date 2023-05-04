@@ -30,3 +30,29 @@ https://app.powerbi.com/view?r=eyJrIjoiNDM2ZDc4MjQtOTU4ZC00NTI3LThlZGEtOTZlZTQ3N
 # Modelos
 
 Propogno hacer un modelo de regresion para predecir o explicar cantidad de credito otorgado
+
+
+# Sobre la data
+
+Los datos los agrega la CNBV a partir de los reportes R04H sobre crédito hipotecario que obtienen de aquí https://www.cnbv.gob.mx/Paginas/PortafolioDeInformacion.aspx
+y los agregan y analizan aquí https://app.powerbi.com/view?r=eyJrIjoiNDM2ZDc4MjQtOTU4ZC00NTI3LThlZGEtOTZlZTQ3NDUwOGE5IiwidCI6IjVlMmM0OTc3LTEwN2QtNDBhMy04YWY3LTcwMDc0ODFhNjBkNCIsImMiOjR9
+
+Citando su pagina:
+
+'''
+La CNBC, a través de la Dirección General de Análisis e Información, con fundamento en el artículo 34, fracciones I y II del reglamento interior, y con el fin de contribuir a la difusión de información que permita el conocimiento, comprensión, investigación, favorezca el análisis y el planteamineto de los retos y cursos de acción viables en materia de cartera a la vivienda de créditos marginales, da a conocer a través del portal de Internet www.gob.mx/cnbv por primera vez, el reporte interactivo de la cartera de vivienda de la Banca Múltiple, Banca de Desarrollo y SOFOM.
+
+La información considera los datos provenientes del reporte regulatorio R04H Cartera vivienda y se presenta la información a partir de enero 2019.
+
+Mediante la publicación y difución de informaicón, la CNBV favorece los criterios para elaborar herramientas que estimulen y mejoren la toma de decisiones y las condiciones de los créditos hipotecarios.
+
+La CNBV continuará trabajando para ampliar la información proporcionada por las instituciones de crédito, siempre procurando su calidad y confiabilidad. El resporte se encuentra disponible en el Portafolio de Información
+'''
+
+# Reportes agregados
+
++ R04 H-0491
+
++ R04 H-0492
+
+# Notas
