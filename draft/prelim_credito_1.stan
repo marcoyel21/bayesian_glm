@@ -1,8 +1,9 @@
 data{
     int n;
-    real<lower=0> tasa[n];
-    real<lower=0> edad[n];
-    real<lower=0> ingreso[n];
+    int k_dest;
+    real tasa[n];
+    real edad[n];
+    real ingreso[n];
     real valor_viv[n];
     real monto_cred[n];
     int destino[n];
@@ -15,36 +16,29 @@ parameters {
    real bMC;
    real<lower=0> a;
    real alpha;
-   vector[10] d_destino;
+   real d_destino[10];
+   real s;
    
 }
 
 
 model{
-    vector[5] c;
-    int k_dest;
-    c[1] = alpha;
-    c[2] = bE;
-    c[3] = bI;
-    c[4] = bVV;
-    c[5] = bMC;
     real m[n];
     
     for(i in 1:n){
-        tasa[i] ~beta(a,a*(1-m[i])/m[i]);
-        m[i] = alpha + bE * edad[i] + bI * ingreso[i] + bVV *valor_viv[i] + bMC * monto_cred[i] + d_destino[destino[i]];
+        tasa[i] ~normal(inv_logit(m[i]),s);
+        m[i] = alpha + bE * edad[i]; #+ bI * ingreso[i] + bVV *valor_viv[i] + bMC * monto_cred[i]; # + d_destino[destino[i]]);
     }
-    for(k in 1:10){
-        d_destino[k] ~ normal(0,1);
-    }
-
-    bE ~normal(0,1);
-    bI ~normal(0,1);
-    bVV ~normal(0,1);
-    bMC ~normal(0,1);
-    alpha ~normal(0,1);
+    // for(k in 1:10){
+    //     d_destino[k] ~ normal(0,1);
+    // }
+    s ~gamma(0.1,0.1);
+    bE ~normal(0,10);
+    bI ~normal(0,10);
+    bVV ~normal(0,10);
+    bMC ~normal(0,10);
+    alpha ~normal(0,10);
     a ~ gamma(0.01,0.01);
-    c ~ normal(0,1);
 
 }
 
