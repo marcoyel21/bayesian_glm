@@ -50,7 +50,9 @@ Se compararon 3 modelos
 
 # Resultados
 
-### Modelo sencillo
+### Modelo pooled
+
+
 
 
 # Análisis y conclusiones
@@ -98,7 +100,17 @@ Las alcaldías con mayor monto promedio inicial son las accidentales, mientras q
 
 # Calidad de convergencia y tests de cadenas
 
+## Modelo pooled
 
+En cuanto al parámetro de efectos fijos $\beta = \gamma + \tau + \beta_{raw,j}, y =1,...,J $ en el j-ésimo grupo, se observa que la distribución posterior del grupo J=1 presentó mayor intervalo de confianza que aquélla del grupo J=2.
+![Intervalos de confianza de betas](betas_pooled.png)
+
+En cuanto a los parámetros asignados a las categorías específicas al grupo, se observa que, para cada categoría, ambas cadenas oscilaron en un rango entre 9.3 y 9.8, en tanto que la segunda cadena presentó menor varianza
+![Diagnóstico de categorías específicas al grupo] (diagnostico.png)
+
+Las cadenas de las betas 
+
+en cuanto a las primeras 4  variables categóricas mu, se observa que la segunda cadena presentó menor varianza, en las cuatro. 
 
 # Tests especificos para modelos geograficos-dinamicos
 
