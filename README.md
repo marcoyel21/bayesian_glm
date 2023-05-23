@@ -1,5 +1,28 @@
-# bayesian_glm
-This repo is wor working on the Generalized Bayesian Lineal models final project
+# Modelos de inferencia bayesiana para predecir tasas de interés hipotecarias en México 
+
+Este proyecto busca predecir las tasas de interés hipotecarias que se asignan a acreditados con diferentes características en México. La base de datos consiste en una cartera de vivienda de créditos marginales, publicada por la Comisión Nacional Bancaria y de Valores (CNBV). Incluye más de 1.1 millones de datos de créditos otorgados a la vivienda durante 2019 a 2023. 
+
+La base de datos original consiste en las siguientes variables:
+- sector: sector a la que pertenece la institución  que otorga el crédito.
+- nombre_publicacion: institución que otorga el crédito
+- dl_estado: entidad federativa
+- dl_municipio: municipio del acreditado
+- dat_ingreso_mensual_bruto: ingreso mensual del acreditado
+- dat_valor_vivienda_originacion: valor de la vivienda del crédito
+- tipo_acreditado: no asalariado, asalariado público o privado
+- dl_tipo_comprobacion: cómo comprobó ingresos el acreditado
+- dat_ai_edad_acred: edad del acreditado
+- dl_genero: género del acreditado
+- numero de crédito: identificador del crédito
+- dat_monto_orig_cred: monto original de crédito
+- dl_destino_credito: en qué se usará el crédito
+- dl_producto_hipotecario: qué producto hipotecario adquirió el acreditado
+- Tipo de Crédito:tipo de crédito
+- dl_segmento_vivienda: segmento a la que pertenece la vivienda: residencial, media o de interés social
+- tasa_ponderada: tasa que se le asignó al cliente
+- fecha: periodo en la que se reporta la información
+- latitud: coordenada geográfica de latitud
+- longitud: coordenada geográfica de longitud
 
 # Instrucciones
 
