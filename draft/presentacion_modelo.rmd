@@ -41,7 +41,7 @@ Se utilizaron tres tipos de modelos:
 - modelos geográficos dinámicos
 ----
 
-<!-- # Resultados
+# Resultados
 ## Modelo pooled
 
 ![](./parametros_pooled.png){width=50%}
@@ -55,17 +55,20 @@ Se utilizaron tres tipos de modelos:
 ![Betas pooled](./betas_pooled.png){width=50%}
 ---
 ## Modelo partial pooled
+![Estimación de parámetro](./parametros_partial_2.png){width=50%}
+---
+![Cadenas partial](./cadenas_partial.png){width=50%}
+---
+![Diagnóstico pooled](./diag_partiakç.png){width=50%}
+---
+![Parámetros pooled](./parametros_partial.png){width=50%}
+---
+## Comparación entre modelos
+En resumen, según los resultados de la comparación LOO, el modelo "partial" muestra un mejor desempeño no tan significativo que el modelo "pooled". 
 
----
-# Análisis y conclusiones
+|        | elpd_diff| se_diff|  elpd_loo| se_elpd_loo| p_loo| se_p_loo|    looic| se_looic|
+|:-------|---------:|-------:|---------:|-----------:|-----:|--------:|--------:|--------:|
+|partial |      0.00|    0.00| -22078.11|      239.14| 17.72|     0.99| 44156.22|   478.29|
+|pooled  |    -47.23|   10.48| -22125.34|      238.08| 10.55|     0.94| 44250.68|   476.16|
 
----
-# Anexo estadístico:
----
-# EDA:
----
-# Calidad de convergencia y tests de cadenas
----
-# Tests especificos para modelos geograficos-dinamicos
----
-"""" -->
+----
