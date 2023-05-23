@@ -14,7 +14,7 @@ date: "2023-05-23"
 - Incluye más de 1.13 millones de datos de créditos otorgados a la vivienda durante 2019 a 2023 en toda la República Mexicana. 
 - Aunque no fuera parte de la base, se consideró incluir dentro del modelo el centroide del municipio de la observación
 - Modelos estáticos y dinámicos
-- También se incluyeron variables categóricas de tipo de crédito, tipo de vivienda, tipo de acreditado (proxy lejano de ocupación), género, edad, segmento de vivienda, entre otros
+- También se incluyeron variables categóricas de tipo de crédito, tipo de vivienda, tipo de acreditado (proxy lejano de ocupación), género, edad, segmento de vivienda, entre otros.
 
 ----
 
@@ -40,7 +40,22 @@ Se utilizaron tres tipos de modelos:
 - modelos geográficos
 - modelos geográficos dinámicos
 ----
-# Resultados
+
+<!-- # Resultados
+## Modelo pooled
+
+![](./parametros_pooled.png){width=50%}
+----
+
+![Cadena pooled](./cadenas_pooled.png){width=50%}
+----
+
+![Diagnostico pooled](./diag_pooled.png){width=50%}
+--- 
+![Betas pooled](./betas_pooled.png){width=50%}
+---
+## Modelo partial pooled
+
 ---
 # Análisis y conclusiones
 
@@ -53,3 +68,4 @@ Se utilizaron tres tipos de modelos:
 ---
 # Tests especificos para modelos geograficos-dinamicos
 ---
+"""" -->
