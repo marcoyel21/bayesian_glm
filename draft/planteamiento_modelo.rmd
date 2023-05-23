@@ -50,19 +50,9 @@ Se compararon 3 modelos
 - Modelos jerárquico simple
 - Modelos jerárquico centrado
 
-# Resultados
-
-### Modelo sencillo
-
-
-# Análisis y conclusiones
-
-
-\newpage
-
 # Anexo estadístico
 
-# EDA:
+# Análisis exploratorio de datos
 
 Distribución por variables:
 - *sector*: se observa que la casi todos los créditos fueron otorgados por banca múltiple.
@@ -110,7 +100,7 @@ En cuanto a los parámetros asignados a las categorías específicas al grupo, s
 
 Las cadenas de las betas 
 
-en cuanto a las primeras 4  variables categóricas mu, se observa que la segunda cadena presentó menor varianza, en las cuatro. 
+En cuanto a las primeras 4 variables categóricas mu, se observa que la segunda cadena presentó menor varianza, en las cuatro. 
 
 # Tests especificos para modelos geograficos-dinamicos
 
@@ -151,6 +141,8 @@ La convergencia de las cadenas es esencial para asegurar que las inferencias y c
 
 ![Betas pooled](./betas_pooled.png){width=50%}
 \newpage
+
+# Resultados
 
 ## Partial pooled
 
@@ -199,7 +191,7 @@ En resumen, según los resultados de la comparación LOO, el modelo "partial" mu
 
 \newpage
 
-# Apendice
+# Apéndice
 
 ## Modelo en Stan 
 
@@ -242,7 +234,7 @@ generated quantities {
 }
 ``` 
 
-### Partial 
+### Modelo Partial Pooled en Stan
 
 ``` 
 data {
