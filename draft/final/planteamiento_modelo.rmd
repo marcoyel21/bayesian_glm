@@ -1,30 +1,64 @@
-# Modelos de inferencia bayesiana para pronosticar tasas de interés hipotecarias asignadas en México
+---
+title: "Proyecto Holo Bayes. Reporte"
+author: "Marco Ramos, Enrique Miranda, Sandra España"
+date: "2023-05-15"
+bibliography: references.bib  
+fontsize: 11pt
+linestretch: "1.15"
+geometry: margin=0.78in
+output: pdf_document
+header-includes:
+   - \usepackage[spanish,es-tabla,es-nodecimaldot]{babel}
+   - \usepackage[utf8]{inputenc}
+   - \usepackage{booktabs}
+abstract: "Este proyecto busca modelar la tasa otorgada a créditos hipotecarios con base en diversas características del acreditado en México durante el 2022. Se encontró que la localización del inmueble es una variable con mayor poder explicativo que otros factores estructurales y personales determinantes como el género y la edad. "
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
 
 # Introducción
 
-Este proyecto busca modelar la tasa otorgada a créditos hipotecarios con base en diversas características del acreditado y el acreedor en México de 2019 a 2023.
+Este proyecto busca modelar la tasa otorgada a créditos hipotecarios con base en diversas características del acreditado y el acreedor en México durante el 2022. En particular se buscó averiguar el impacto que tienen la localización del inmueble comprado en la tasa de interés y si esta influencia es mayor o menor a la de las caracterísitcas del acreditado.
 
-La base de datos consiste en una cartera de vivienda de créditos marginales, publicada por la Comisión Nacional Bancaria y de Valores (CNBV). Incluye más de 1.1 millones de datos de créditos otorgados a la vivienda durante 2019 a 2023. 
+La base de datos consiste en una cartera de vivienda de créditos marginales, publicada por la Comisión Nacional Bancaria y de Valores (CNBV). Incluye más de 1.1 millones de datos de créditos otorgados a la vivienda durante 2019 a 2023. Sin embargo, debido a las limitantes de computo y tiempo, hemos decidido solo utilizar datos de una entidad (CDMX) y un año(2022). Aunque bien se podría replicar el código para cualquier otra entidad y cualquier otro año. 
 
-Para estos modelos, se consideró incluir dentro del modelo la posición geográfica del centroide del municipio de la vivienda del acreditado, así como la evolución en el tiempo por el cambio de tasas de interés en el contexto internacional.
+Los datos son abiertos, públicos y accesibles y se originan de la compilación de documentos que por ley los bancos deben llenar y entregar a la CNBV cuándo otorguen un crédito hipotecario.
 
-También se incluyeron variables categóricas de tipo de crédito, tipo de vivienda, tipo de acreditado (proxy lejano de ocupación), género, edad, segmento de vivienda, entre otros.
+# Antecedentes
+
+Existen diversos determinantes en el nivel de tasa de interés que se le ofrece a una persona. Algunos son factores personales como el *score* crediticio o el ingreso; algunos otros son coyunturales como las tasas de referencia bancarias y demás variables macroeconómicas; y muchos otros son estructurales, como el género, la edad y la localización de origen o de compra del inmueble.
+
+Es decir, modelar las tasas de interés nos presenta una oportunidad de poder construir un modelo lineal generalizado que contemple parámetros específicos de cada situación (como la localidad de compra del inmueble) combinandolos con factores estructurales, como el género y edad de la persona.
 
 # Modelos:
 
-Se utilizaron tres tipos de modelos:
-- Modelos base
-- Modelos jerárquicos
-- Modelos dinámicos
+Partimos de una misma estructura general para todos los modelos que comparamos: la tasa de interés se puede explicar por la edad y género del acreditado más un parámetro $\beta_0$. Conforme aumenta la complejidad del modelo veremos que la $\beta_0$ va adquiriendo distinto sentido, interpretación e importancia.
+
+## Estructura general
+
+$$Y \sim \beta_0 + \beta_1\cdot x_1+ \beta_2 \cdot x_2$$
+
+## Diseño
+
+Se compararon 3 modelos
+
+- Modelo sencillo (pooled)
+- Modelos jerárquico simple
+- Modelos jerárquico centrado
 
 # Resultados
 
+### Modelo sencillo
 
 
 # Análisis y conclusiones
 
 
-# Anexos
+\newpage
+
+# Anexo estadístico
 
 # EDA:
 
