@@ -118,6 +118,185 @@ Las alcaldías con mayor monto promedio inicial son las accidentales, mientras q
 
 # Tests especificos para modelos geograficos-dinamicos
 
+
+# Modelos
+
+- Software: Stan
+- Lenguaje: R
+- Procesador: ARM
+
+## Pooled
+
+### Parámetros
+
+- thin = 4
+- chains = 2
+- warmup: 500
+- iter: 5,000
+- Algoritmo de muestreo: NUTS (No-U-Turn sampler)
+
+**Agregar en látex modelo
+
+### Diagnóstico
+
+Se observa que las cadenas del modelo han convergido. La convergencia de las cadenas es un indicador importante de que el muestreador ha explorado adecuadamente el espacio de parámetros.
+
+RStan utiliza el diagnóstico R-hat (también conocido como factor de escala de Gelman-Rubin) para evaluar la convergencia de las cadenas. Un valor de R-hat cercano a 1, generalmente inferior a 1.05, indica que las cadenas han convergido y que los resultados del modelo son confiables.
+
+La convergencia exitosa de las cadenas sugiere que el algoritmo NUTS ha explorado de manera efectiva el espacio de parámetros. Esto implica que los resultados obtenidos son estables y consistentes, y que las estimaciones de los parámetros son confiables para su interpretación.
+
+La convergencia de las cadenas es esencial para asegurar que las inferencias y conclusiones basadas en el modelo sean válidas. 
+
+![](./parametros_pooled.png){width=50%}
+
+![Cadena pooled](./cadenas_pooled.png){width=50%}
+
+![Diagnostico pooled](./diag_pooled.png){width=50%}
+
+![Betas pooled](./betas_pooled.png){width=50%}
+\newpage
+
+## Partial pooled
+
+### Parámetros
+
+- thin = 6
+- chains = 2
+- warmup: 3,000
+- iter: 10,000
+- Algoritmo de muestreo: NUTS (No-U-Turn sampler)
+
+**Agregar en látex modelo
+
+### Diagnóstico
+
+Se observa que las cadenas del modelo no han convergido. Esto se observa desde el calculo de Rhat y también en los gráficos de las cadenas, para mejorar esto se debería de incrementar el número de pre-calentamiento y el número de iteraciones, por temas de computo no se pudo realizar, aunque esto debería de hacerse para que las estimaciones de los parámetros sean confiables para su interpretación.
+
+![Estimación de parámetro](./parametros_partial_2.png){width=50%}
+
+![Cadenas partial](./cadenas_partial.png){width=50%}
+
+![Diagnóstico pooled](./diag_partiakç.png){width=50%}
+
+![Parámetros pooled](./parametros_partial.png){width=50%}
+
+\newpage
+
+## Comparación de resultados LOO (Leave-one-out)
+
+En la tabla de comparación de resultados del método LOO (Leave-One-Out), se presentan los siguientes valores para los modelos "partial" y "pooled":
+
+- elpd_diff: La diferencia en log densidad predictiva puntual esperada (elpd) entre los modelos. Un valor positivo indica que el modelo "partial" tiene un mejor desempeño, mientras que un valor negativo favorece al modelo "pooled". En este caso, el elpd_diff para "partial" es 0.00, lo que indica que no hay diferencia en el rendimiento predictivo en comparación con el modelo "pooled".
+- se_diff: El error estándar asociado al elpd_diff. Un valor más pequeño sugiere una estimación más precisa. El modelo "partial" tiene un se_diff de 0.00, lo que indica que no hay incertidumbre en el elpd_diff.
+- p_loo: La probabilidad de que el modelo sea el mejor en términos de rendimiento predictivo dentro del conjunto de modelos considerados. El valor para el modelo "partial" es 17.72.
+- se_p_loo: El error estándar asociado a la p_loo. Para el modelo "partial", el valor es 0.99.
+- looic: La información de información esperada fuera de la muestra (LOOIC) del modelo. Para el modelo "partial", el valor es 44156.22.
+- se_looic: El error estándar asociado al looic. Para el modelo "partial", el valor es 478.29.
+
+En resumen, según los resultados de la comparación LOO, el modelo "partial" muestra un mejor desempeño no tan significativo que el modelo "pooled". 
+
+|        | elpd_diff| se_diff|  elpd_loo| se_elpd_loo| p_loo| se_p_loo|    looic| se_looic|
+|:-------|---------:|-------:|---------:|-----------:|-----:|--------:|--------:|--------:|
+|partial |      0.00|    0.00| -22078.11|      239.14| 17.72|     0.99| 44156.22|   478.29|
+|pooled  |    -47.23|   10.48| -22125.34|      238.08| 10.55|     0.94| 44250.68|   476.16|
+
+
+![Comparación looic](./comparison_looic.png){width=50%}
+
+\newpage
+
+# Apendice
+
+## Modelo en Stan 
+
+### Pooled 
+
+``` 
+data {
+  int<lower=1> N;                              // Number of observations
+  vector[N] tasa_ponderada;                    // Response variable
+  vector[N] dl_generoMasculino;                // Predictor: binary indicator for male gender
+  vector[N] dat_ai_edad_acred;                  // Predictor: additional data
+}
+
+parameters {
+  real alpha;                                  // Intercept
+  real beta1;                                  // Coefficient for predictor dl_generoMasculino
+  real beta2;                                  // Coefficient for predictor dat_ai_edad_acred
+  real<lower=0> sigma;                         // Standard deviation of the residuals
+}
+
+model {
+  alpha ~ normal(0, 10);                       // Prior for alpha
+  beta1 ~ normal(-2, 2);                       // Prior for beta1
+  beta2 ~ normal(-2, 2);                       // Prior for beta2
+  sigma ~ cauchy(0, 5);                         // Prior for sigma
+  
+  for(n in 1:N){
+    tasa_ponderada[n] ~ normal(alpha + beta1 * dl_generoMasculino[n] + beta2 * dat_ai_edad_acred[n], sigma); //Likelihood
+  }
+}
+
+generated quantities {
+  vector[N] y_pred;
+  vector[N] log_lik;
+  
+  for (i in 1:N) {
+    y_pred[i] = normal_rng( alpha + beta1 * dl_generoMasculino[i] + beta2 * dat_ai_edad_acred[i], sigma);
+    log_lik[i] = normal_lpdf(tasa_ponderada[i] | alpha + beta1 * dl_generoMasculino[i] + beta2 * dat_ai_edad_acred[i], sigma);
+  }
+}
+``` 
+
+### Partial 
+
+``` 
+data {
+  int<lower=0> N;               // Number of observations
+  vector[N] tasa_ponderada;   // Response variable
+  vector[N] genero;          // Response variable (dummy)
+  vector[N] dat_ai_edad_acred;  // Age
+  int<lower=1> J_1;               // Number of groups
+  int<lower=1, upper=J_1> index_1[N]; // Grouping variable for each observation
+}
+
+parameters {
+  vector[J_1] mu;                 // Group-specific means
+  real<lower=0> sigma_indi;          // Common standard deviation
+  real<lower=0> sigma_group;          // Common standard deviation
+  real alpha; 
+  real beta;                  // Coefficient for predictor
+  real beta2;
+  real sigma;
+
+}
+
+model {
+  // Priors
+  alpha ~ normal(0, 20);
+  mu ~ normal(0, 20);
+  beta ~ normal(-2, 2);
+  beta2 ~ normal(-2, 2);
+  sigma ~ cauchy(0, 5);
+
+  // Likelihood
+  for(n in 1:N){
+    tasa_ponderada[n] ~ normal(mu[index_1[n]] + beta * genero[n] + beta2 * dat_ai_edad_acred[n], sigma); // Variance within state j
+  }
+
+}
+
+generated quantities {
+  vector[N] y_pred;
+  real log_lik[N];
+  
+  for (n in 1:N) {
+    y_pred[n] = normal_rng(mu[index_1[n]] + beta * genero[n] + beta2 * dat_ai_edad_acred[n], sigma);
+    log_lik[n] = normal_lpdf(tasa_ponderada[n] | mu[index_1[n]] + beta * genero[n] + beta2 * dat_ai_edad_acred[n], sigma);
+  }
+}
+``` 
+
 # Referencias
 
 - Comisión Nacional Bancaria y de Valores, *Cartera de crédito. Créditos a la vivienda, instructivo de llenado*, 2016. 
