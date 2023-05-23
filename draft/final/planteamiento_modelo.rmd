@@ -22,21 +22,30 @@ Se utilizaron tres tipos de modelos:
 # Análisis y conclusiones
 
 
-# Anexo
+# Anexos
 
 # EDA:
 
-Distribución por variable:
+Distribución por variables:
 - *sector*: se observa que la casi todos los créditos fueron otorgados por banca múltiple.
 - *tipo de acreditado*: la mayoría de los acreditados son asalariados privados, mientras que otros pocos son asalariados públicos
 - *tipo de comprobación*: casi todos los créditos se otorgan a asalariados.
 - *edad del acreditado*: la distribución de la edad está sesgada a la derecha, con un rango de 20 a 70 años; la moda está poco después de los 30 años.
-- *género*: 
-
-
-
+- *género*: la mayoría de los acreditados son hombres
+- *destino de crédito*: la moda de los destinos de los créditos otorgados se usan para adquisición de vivienda nueva o mejoras a vivienda
+- *tipo de crédito*: la mayoría se usan sin cofinanciamiento
+- *segmento de vivienda*: la mayoría se otorgan para vivienda media o residencial, o bien para mejoras vía banca de desarrollo
 
 ![Distribución por variable](histogramas.png)
+
+Se observa que el ingreso promedio de los acreditados tuvo su pico a inicios de 2022, para lluego regresar a su rango normal de 100 mil - 200 mil
+
+![Ingreso promedio en el tiempo](ingreso.png)
+
+El número de créditos otorgados tocó su mínimo desde al menos 2019 a inicios de 2023.
+
+![Número de créditos otorgados](num_cred.png)
+
 
 
 # Calidad de convergencia y tests de cadenas
