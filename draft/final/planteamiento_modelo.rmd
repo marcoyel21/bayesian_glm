@@ -1,0 +1,46 @@
+# Modelos de inferencia bayesiana para pronosticar tasas de interés hipotecarias asignadas en México
+
+# Introducción
+
+Este proyecto busca modelar la tasa otorgada a créditos hipotecarios con base en diversas características del acreditado y el acreedor en México de 2019 a 2023.
+
+La base de datos consiste en una cartera de vivienda de créditos marginales, publicada por la Comisión Nacional Bancaria y de Valores (CNBV). Incluye más de 1.1 millones de datos de créditos otorgados a la vivienda durante 2019 a 2023. 
+
+Para estos modelos, se consideró incluir dentro del modelo la posición geográfica del centroide del municipio de la vivienda del acreditado, así como la evolución en el tiempo por el cambio de tasas de interés en el contexto internacional.
+
+También se incluyeron variables categóricas de tipo de crédito, tipo de vivienda, tipo de acreditado (proxy lejano de ocupación), género, edad, segmento de vivienda, entre otros.
+
+# Modelos:
+
+Se utilizaron tres tipos de modelos:
+- Modelos base
+- Modelos jerárquicos
+- Modelos dinámicos
+
+# Resultados
+
+# Análisis y conclusiones
+
+
+# Anexo
+
+# EDA:
+
+Distribución por variable:
+- *sector*: se observa que la casi todos los créditos fueron otorgados por banca múltiple.
+- *tipo de acreditado*: la mayoría de los acreditados son asalariados privados, mientras que otros pocos son asalariados públicos
+- *tipo de comprobación*: casi todos los créditos se otorgan a asalariados.
+- *edad del acreditado*: la distribución de la edad está sesgada a la derecha, con un rango de 20 a 70 años; la moda está poco después de los 30 años.
+- *género*: 
+
+
+
+
+![Distribución por variable](histogramas.png)
+
+
+# Calidad de convergencia y tests de cadenas
+
+# Tests especificos para modelos geograficos-dinamicos
+
+# Referencias

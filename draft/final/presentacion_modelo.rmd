@@ -1,0 +1,55 @@
+---
+title: "Modelos de inferencia bayesiana para pronosticar asignación de tasas de interés hipotecarias en México"
+subtitle: "Presentación de proyecto"
+output:
+  beamer_presentation: default
+  ioslides_presentation: default
+  slidy_presentation: default
+date: "2023-05-23"
+---
+
+# Resumen
+
+- cartera de vivienda de créditos marginales, publicada por la CNBV
+- Incluye más de 1.13 millones de datos de créditos otorgados a la vivienda durante 2019 a 2023 en toda la República Mexicana. 
+- Aunque no fuera parte de la base, se consideró incluir dentro del modelo el centroide del municipio de la observación
+- Modelos estáticos y dinámicos
+- También se incluyeron variables categóricas de tipo de crédito, tipo de vivienda, tipo de acreditado (proxy lejano de ocupación), género, edad, segmento de vivienda, entre otros.
+
+----
+
+# Revisión de literatura 
+
++ Correlación entre tasa de interés y variables económicas
++ Determinantes de la tasa de interés en hipotecas
++ *Poor economics:* los pobres se enfrentan a peores condiciones de financiamiento
++ Impacto de género y edad (*ceteris paribus*)
+
+-----
+# Hipótesis:
+Independientemente de la información que tengamos o NO de score de crédito:
++ La tasa de interés varía en el tiempo
++ La tasa de interés varía regionalmente
++ El género y la edad son importantes
++ Las personas más pobres se estan exponiendo a mayores tasas de interés
++ Se acotó a créditos otorgados dentro de la CDMX, al ser la entidad con más observaciones.
+----
+# Modelos:
+Se utilizaron tres tipos de modelos:
+- Modelos base
+- modelos geográficos
+- modelos geográficos dinámicos
+----
+# Resultados
+---
+# Análisis y conclusiones
+
+---
+# Anexo estadístico:
+---
+# EDA:
+---
+# Calidad de convergencia y tests de cadenas
+---
+# Tests especificos para modelos geograficos-dinamicos
+---
