@@ -22,17 +22,17 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Introducción
 
-Este proyecto busca modelar la tasa otorgada a créditos hipotecarios con base en diversas características del acreditado y el acreedor en la Ciudad de México durante el 2022. En particular se buscó averiguar el impacto que tienen la localización del inmueble comprado en la tasa de interés y si esta influencia es mayor o menor a la de las caracterísitcas del acreditado.
+Este proyecto busca modelar la tasa otorgada a créditos hipotecarios con base en diversas características del acreditado y el acreedor en la Ciudad de México durante el 2022. En particular se buscó averiguar el impacto que tienen la localización del inmueble comprado en la tasa de interés y si esta influencia es mayor o menor a la de las características del acreditado.
 
-Nos enfocamos en tasas de créditos otorgados en la CDMX, pero la base de datos original consiste en una cartera de vivienda de créditos marginales, publicada por la Comisión Nacional Bancaria y de Valores (CNBV)^[@source]. Incluye más de 1.1 millones de datos de créditos otorgados a la vivienda durante 2019 a 2023. Sin embargo, debido a las limitantes de computo y tiempo, hemos decidido solo utilizar datos de una entidad (CDMX) y un año(2022). Aunque bien se podría replicar el código para cualquier otra entidad y cualquier otro año. 
+Nos enfocamos en tasas de créditos otorgados en la CDMX, pero la base de datos original consiste en una cartera de vivienda de créditos marginales, publicada por la Comisión Nacional Bancaria y de Valores (CNBV)^[@source]. Incluye más de 1.1 millones de datos de créditos otorgados a la vivienda durante 2019 a 2023 a nivel nacional. Sin embargo, debido a las limitantes de cómputo y tiempo, hemos decidido sólo utilizar datos de una entidad (CDMX) y un año(2022). No obstante, se podría replicar el código para cualquier otra entidad y cualquier otro año. 
 
-Los datos son abiertos, públicos y accesibles y se originan de la compilación de documentos que por ley los bancos deben llenar y entregar a la CNBV cuándo otorguen un crédito hipotecario.^[@cnbv]
+Los datos son abiertos, públicos y accesibles, se originan de la compilación de documentos que por ley los bancos deben llenar y entregar a la CNBV cuándo otorguen un crédito hipotecario.^[@cnbv]
 
 # Antecedentes
 
 Existen diversos determinantes en el nivel de tasa de interés que se le ofrece a una persona. Algunos son factores personales como el *score* crediticio o el ingreso; algunos otros son coyunturales como las tasas de referencia bancarias y demás variables macroeconómicas^[@cnbv]; y muchos otros son estructurales, como el género^[@gender], la edad^[@age] y la localización de origen o de compra del inmueble.
 
-Es decir, modelar las tasas de interés nos presenta una oportunidad de poder construir un modelo lineal generalizado que contemple parámetros específicos de cada situación (como la localidad de compra del inmueble) combinandolos con factores estructurales, como el género y edad de la persona.
+Es decir, modelar las tasas de interés nos presenta una oportunidad de poder construir un modelo lineal generalizado que contemple parámetros específicos de cada situación (como la localidad de compra del inmueble) combinándolos con factores estructurales, como el género y edad de la persona.
 
 # Modelos:
 
@@ -161,8 +161,6 @@ La convergencia de las cadenas es esencial para asegurar que las inferencias y c
 - warmup: 3,000
 - iter: 10,000
 - Algoritmo de muestreo: NUTS (No-U-Turn sampler)
-
-**Agregar en látex modelo
 
 ### Diagnóstico
 
