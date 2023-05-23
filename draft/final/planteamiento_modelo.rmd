@@ -17,18 +17,20 @@ abstract: "Este proyecto busca modelar la tasa otorgada a créditos hipotecarios
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+\tableofcontents
+\newpage
 
 # Introducción
 
 Este proyecto busca modelar la tasa otorgada a créditos hipotecarios con base en diversas características del acreditado y el acreedor en México durante el 2022. En particular se buscó averiguar el impacto que tienen la localización del inmueble comprado en la tasa de interés y si esta influencia es mayor o menor a la de las caracterísitcas del acreditado.
 
-La base de datos consiste en una cartera de vivienda de créditos marginales, publicada por la Comisión Nacional Bancaria y de Valores (CNBV). Incluye más de 1.1 millones de datos de créditos otorgados a la vivienda durante 2019 a 2023. Sin embargo, debido a las limitantes de computo y tiempo, hemos decidido solo utilizar datos de una entidad (CDMX) y un año(2022). Aunque bien se podría replicar el código para cualquier otra entidad y cualquier otro año. 
+La base de datos consiste en una cartera de vivienda de créditos marginales, publicada por la Comisión Nacional Bancaria y de Valores (CNBV)^[@source]. Incluye más de 1.1 millones de datos de créditos otorgados a la vivienda durante 2019 a 2023. Sin embargo, debido a las limitantes de computo y tiempo, hemos decidido solo utilizar datos de una entidad (CDMX) y un año(2022). Aunque bien se podría replicar el código para cualquier otra entidad y cualquier otro año. 
 
-Los datos son abiertos, públicos y accesibles y se originan de la compilación de documentos que por ley los bancos deben llenar y entregar a la CNBV cuándo otorguen un crédito hipotecario.
+Los datos son abiertos, públicos y accesibles y se originan de la compilación de documentos que por ley los bancos deben llenar y entregar a la CNBV cuándo otorguen un crédito hipotecario.^[@cnbv]
 
 # Antecedentes
 
-Existen diversos determinantes en el nivel de tasa de interés que se le ofrece a una persona. Algunos son factores personales como el *score* crediticio o el ingreso; algunos otros son coyunturales como las tasas de referencia bancarias y demás variables macroeconómicas; y muchos otros son estructurales, como el género, la edad y la localización de origen o de compra del inmueble.
+Existen diversos determinantes en el nivel de tasa de interés que se le ofrece a una persona. Algunos son factores personales como el *score* crediticio o el ingreso; algunos otros son coyunturales como las tasas de referencia bancarias y demás variables macroeconómicas^[@cnbv]; y muchos otros son estructurales, como el género^[@gender], la edad^[@age] y la localización de origen o de compra del inmueble.
 
 Es decir, modelar las tasas de interés nos presenta una oportunidad de poder construir un modelo lineal generalizado que contemple parámetros específicos de cada situación (como la localidad de compra del inmueble) combinandolos con factores estructurales, como el género y edad de la persona.
 
@@ -50,6 +52,20 @@ Se compararon 3 modelos
 
 # Resultados
 
+En cuanto a los parámetros, notamos que en el primer modelo, el coeficiente de género masculino es positivo lo que quiere decir que los hombres *ceteris paribus* acceden a un crédito más caro. Esto puede deberse a un problema de selección pues en realidad son muy pocas las mujeres que están teniendo créditos hipotecarios de acuerdo a los datos, y puede que este sea un grupo muy particular de mujeres.
+
+También notamos que el coeficiente del parámetro de edad es negativo, lo que quiere decir que entre más grande es la gente, mejores tasas va obteniendo. Esto es un resultado muy intuitivo pues conforme se avanza en edad el ingreso y la estaibilidad económica, laboral, emocional aumenta.
+
+En cuanto a los modelos jerarquicos, si bien, en el primer modelo, los parámetros de edad y de género resultaron ser significativos y tenían gran poder explicativo sobre la tasa de interés; conforme fuimos complicando el modelo, estos perdieron importancia y fue la localización geográfica del inmueble la variable con más poder explicativo: **la localización del inmueble pesa más como determinante de la tasa de interés que los factores personales y estructurales**.
+
+Sin embargo notamos un patrón, son las localidades más pobres relativamente con el resto de las delegaciones, aquellas con las tasas de interés más altas. Replicamos el ejercicio para todo el país y encontramos un patrón similar: las casas que se están comprando en estados y delegaciones más pobres se enfrentan a mayores tasas de interés *ceteris paribus*.
+
+Esto no es sorpresa pues **las tasas de interés reflejan el riesgo para el acredor de obtener el dinero de regreso**. En este sentido, las tasas a las que se puede acceder desde una situación desfavorecida son en general peores^[@poor] Pensemos por ejemplo en el modelo de negocio de Electra o Famsa, empresas dedicadas al financiamiento largo de productos para las familias populares.
+
+Finalmente, también encontramos que existe un *trade off* entre centrar o no un modelo jerarquico pues las estimaciones resultaron más difíciles y ruidosas con el modelo jerarquico centrado que con el simple. 
+
+
+\newpage
 ### Modelo sencillo
 
 
