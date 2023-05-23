@@ -46,6 +46,20 @@ El número de créditos otorgados tocó su mínimo desde al menos 2019 a inicios
 
 ![Número de créditos otorgados](num_cred.png)
 
+## CDMX
+
+Las alcaldías con más créditos otorgados durante los últimos cinco años han sido alcaldías céntricas: Benito Juárez, Cuauhtémoc, Miguel Hidalgo, Álvaro Obregón y Coyoacán.
+
+![Créditos otorgados en la CDMX](creditos_cdmx.jpeg)
+
+En Xochimilco, Cuajimalpa y Magdalena Contreras se ha dado el mayor enganche promedio. En las colonias del oriente se da menor enganche promedio.
+
+![Enganche promedio por alcaldía](enganche_prom.jpeg)
+
+Las alcaldías con mayor monto promedio inicial son las accidentales, mientras que las colonias orientales tuvieron el menor monto promedio inicial del periodo.
+
+![Monto promedio total de crédito](promedio_monto.jpeg)
+
 # Calidad de convergencia y tests de cadenas
 
 
@@ -54,4 +68,7 @@ El número de créditos otorgados tocó su mínimo desde al menos 2019 a inicios
 
 # Referencias
 
--
+- Comisión Nacional Bancaria y de Valores, *Cartera de crédito. Créditos a la vivienda, instructivo de llenado*, 2016. 
+- BE/Bi 103 b: Statistical Inference in the Biological Sciences, *Regression with MCMC*, Github repository, https://bebi103b.github.io/lessons/11/regression_with_stan.html
+- Johnson, A. A., Ott, M. Q., & Dogucu, M. (2022). Bayes rules!: an introduction to applied Bayesian modeling. CRC Press.
+- Xie, Y; Dervieux, C, et al (2022). R Markdown Cookbook, notes from Github repository, https://github.com/rstudio/bookdown
