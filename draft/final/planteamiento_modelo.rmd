@@ -46,10 +46,12 @@ El número de créditos otorgados tocó su mínimo desde al menos 2019 a inicios
 
 ![Número de créditos otorgados](num_cred.png)
 
-
-
 # Calidad de convergencia y tests de cadenas
+
+
 
 # Tests especificos para modelos geograficos-dinamicos
 
 # Referencias
+
+-
